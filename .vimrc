@@ -55,6 +55,23 @@ command! -nargs=1 Archi execute 'silent !git add -A && git commit -m ' . shelles
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
 
+" NERDTree Git Plugin
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'🗨️',
+                \ 'Staged'    :'💭',
+                \ 'Untracked' :'👀',
+                \ 'Renamed'   :'🙃',
+                \ 'Unmerged'  :'🤢',
+                \ 'Deleted'   :'🫥',
+                \ 'Dirty'     :'😏',
+                \ 'Ignored'   :'🙈',
+                \ 'Clean'     :'🙂',
+                \ 'Unknown'   :'🥸',
+                \ }
+
+let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
+
 " ##############################################################################
 
 set wrap
