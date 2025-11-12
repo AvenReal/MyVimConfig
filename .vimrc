@@ -111,8 +111,11 @@ if filereadable("main.c") && expand('%:t:r') != "main.c"
     :wincmd H
 else
     :let wid = win_getid()
-    :vs a
+    :vs "temp.vim"
+    :let temp = win_getid()
     :below term
     :call win_gotoid(wid)
     :wincmd H
+    :call win_gotoid(temp)
+    :q
 endif
