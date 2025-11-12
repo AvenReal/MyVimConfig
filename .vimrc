@@ -93,6 +93,30 @@ set mouse=a
 "                               Remaps
 " ##############################################################################
 
+command! Wqa call CloseTermAndQuit()
+
+function! CloseTermAndQuit()
+  " Loop over all buffers
+  for buf in range(1, bufnr('$'))
+    if bufexists(buf) && getbufvar(buf, '&buftype') ==# 'terminal'
+      execute 'bdelete!' buf
+    endif
+  endfor
+  " Now write and quit all
+  wall | qall
+endfunction
+
+
+nnoremap :wqa :Wqa
+nnoremap :WQa :Wqa
+nnoremap :WQA :Wqa
+
+inoremap :wqa <Esc>:Wqa
+inoremap :Wqa <Esc>:Wqa
+inoremap :WQa <Esc>:Wqa
+inoremap :WQA <Esc>:Wqa
+
+
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap ' ''<Esc>i
@@ -102,11 +126,7 @@ inoremap {<CR> <CR>{<CR>} <Esc>O
 
 inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
 inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
-inoremap fork for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
-
-inoremap :wq <Esc>:wq<Enter>
-
-nnoremap :W :wq<Enter>:wq<Enter>exit<Enter>
+inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
 
 nnoremap x :w<Enter> :! clear && gcc *.c -fsanitize=address -Wextra -g && echo "-------------------------------------------------------------------" && ./a.out && rm a.out <Enter>
 
@@ -117,8 +137,12 @@ inoremap <A-> <C-n>
 
 
 " ##############################################################################
-"                                  At launch
+"                                  Extra
 " ##############################################################################
+
+" Automatically close terminal buffers when quitting all
+autocmd QuitPre * if &buftype == 'terminal' | execute 'bdelete!' | endif
+
 
 if filereadable("main.c") && expand('%:t:r') != "main.c"
     :let wid = win_getid()
@@ -126,6 +150,7 @@ if filereadable("main.c") && expand('%:t:r') != "main.c"
     :below term
     :call win_gotoid(wid)
     :wincmd H
+    :vertical resize 120
 else
     :let wid = win_getid()
     :vs "temp.vim"
@@ -135,4 +160,6 @@ else
     :wincmd H
     :call win_gotoid(temp)
     :q
+    :call win_gotoid(wid)
+    :vertical resize 120
 endif
