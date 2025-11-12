@@ -70,22 +70,40 @@ autocmd VimEnter * NERDTree | wincmd p
 " NERDTree Git Plugin
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'🗨️',
-                \ 'Staged'    :'💭',
-                \ 'Untracked' :'👀',
+                \ 'Modified'  :'😁',
+                \ 'Staged'    :'🙂',
+                \ 'Untracked' :'🥶',
                 \ 'Renamed'   :'🙃',
                 \ 'Unmerged'  :'🤢',
                 \ 'Deleted'   :'🫥',
                 \ 'Dirty'     :'😏',
-                \ 'Ignored'   :'🙈',
-                \ 'Clean'     :'🙂',
-                \ 'Unknown'   :'🥸',
+                \ 'Ignored'   :'😡',
+                \ 'Clean'     :'😇',
+                \ 'Unknown'   :'🤡',
                 \ }
 
 let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
 
 " ##############################################################################
+"                               Git Gutter
+" ##############################################################################
 
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '┰'
+let g:gitgutter_sign_removed_above_and_below = '-'
+let g:gitgutter_sign_modified_removed = '≃'
+
+
+highlight SignColumn        ctermbg=NONE
+highlight GitGutterAdd      guifg=#00ff00 guibg=#00ff00
+highlight GitGutterChange   guifg=#ffff00 guibg=#ffff00
+highlight GitGutterDelete   guifg=#ff0000 guibg=#ff0000
+
+" ##############################################################################
+"                               Other Things
+" ##############################################################################
 set wrap
 set textwidth=79
 set tabstop=4
