@@ -1,5 +1,10 @@
 " ~/.vimrc
 
+
+" ##############################################################################
+"                                 Vundle Plugins
+" ##############################################################################
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -13,10 +18,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 
 " https://github.com/preservim/nerdtree
-" https://github.com/Xuyuanp/nerdtree-git-plugin
 Plugin 'preservim/nerdtree'
+
+" https://github.com/Xuyuanp/nerdtree-git-plugin
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
+" https://github.com/airblade/vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -25,6 +33,10 @@ filetype plugin indent on    " required
 "filetype plugin on
 
 runtime! plugin/sensible.vim
+
+" ##############################################################################
+"                                  Things
+" ##############################################################################
 
 set encoding=utf-8 fileencodings=
 syntax on
