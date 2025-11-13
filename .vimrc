@@ -104,6 +104,7 @@ highlight GitGutterDelete   guifg=#ff0000 guibg=#ff0000
 " ##############################################################################
 "                               Other Things
 " ##############################################################################
+
 set wrap
 set textwidth=79
 set tabstop=4
@@ -160,8 +161,7 @@ inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
 
 nnoremap x :w<Enter> :! clear && gcc *.c -fsanitize=address -Wextra -g && echo "-------------------------------------------------------------------" && ./a.out && rm a.out <Enter>
 
-nnoremap ~ :tabnew ~/.vimrc<Enter>
-inoremap <A-> <C-n>
+nnoremap ~ :tabnew ~/.vimrc<Enter> :let wid = win_getid() <Enter>:vs "temp.vim" <Enter>:below term <Enter>:call win_gotoid(temp) <Enter>:q <Enter>:call win_gotoid(wid):vertical resize 120<Enter>
 
 
 
@@ -173,6 +173,7 @@ inoremap <A-> <C-n>
 " Automatically close terminal buffers when quitting all
 autocmd QuitPre * if &buftype == 'terminal' | execute 'bdelete!' | endif
 
+:colorscheme habamax
 
 if filereadable("main.c") && expand('%:t:r') != "main.c"
     :let wid = win_getid()
