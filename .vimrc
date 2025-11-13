@@ -155,15 +155,17 @@ inoremap " ""<Esc>i
 inoremap { {}<Esc>i
 inoremap {<CR> <CR>{<CR>} <Esc>O
 
+
 inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
 inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
 inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
 
+
 nnoremap x :w<Enter> :! clear && gcc *.c -fsanitize=address -Wextra -g && echo "-------------------------------------------------------------------" && ./a.out && rm a.out <Enter>
 
-nnoremap ~ :tabnew ~/.vimrc<Enter> :let wid = win_getid() <Enter>:vs "temp.vim" <Enter>:below term <Enter>:call win_gotoid(temp) <Enter>:q <Enter>:call win_gotoid(wid):vertical resize 120<Enter>
 
-
+nnoremap ~ :tabnew ~/.vimrc<Enter>
+" :let wid = win_getid() <Enter>:vs "temp.vim" <Enter>:below term <Enter>:call win_gotoid(temp) <Enter>:q <Enter>:call win_gotoid(wid):vertical resize 120<Enter>
 
 
 " ##############################################################################
