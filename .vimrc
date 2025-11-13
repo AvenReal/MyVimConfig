@@ -70,16 +70,16 @@ autocmd VimEnter * NERDTree | wincmd p
 " NERDTree Git Plugin
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'😁',
-                \ 'Staged'    :'🙂',
-                \ 'Untracked' :'🥶',
-                \ 'Renamed'   :'🙃',
-                \ 'Unmerged'  :'🤢',
-                \ 'Deleted'   :'🫥',
-                \ 'Dirty'     :'😏',
-                \ 'Ignored'   :'😡',
-                \ 'Clean'     :'😇',
-                \ 'Unknown'   :'🤡',
+                \ 'Modified'  :'+',
+                \ 'Staged'    :'±',
+                \ 'Untracked' :'!',
+                \ 'Renamed'   :'≃',
+                \ 'Unmerged'  :'⇄',
+                \ 'Deleted'   :'×',
+                \ 'Dirty'     :'→',
+                \ 'Ignored'   :'~',
+                \ 'Clean'     :'=',
+                \ 'Unknown'   :'?',
                 \ }
 
 let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
@@ -163,8 +163,9 @@ inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
 
 nnoremap x :w<Enter> :! clear && gcc *.c -fsanitize=address -Wextra -g && echo "-------------------------------------------------------------------" && ./a.out && rm a.out <Enter>
 
+command! Vimrc tabnew ~/.vimrc | term | wincmd L
 
-nnoremap ~ :tabnew ~/.vimrc<Enter>
+nnoremap ~ :Vimrc<Enter> cd ~/<Enter>
 " :let wid = win_getid() <Enter>:vs "temp.vim" <Enter>:below term <Enter>:call win_gotoid(temp) <Enter>:q <Enter>:call win_gotoid(wid):vertical resize 120<Enter>
 
 
@@ -186,13 +187,8 @@ if filereadable("main.c") && expand('%:t:r') != "main.c"
     :vertical resize 120
 else
     :let wid = win_getid()
-    :vs "temp.vim"
-    :let temp = win_getid()
     :below term
     :call win_gotoid(wid)
     :wincmd H
-    :call win_gotoid(temp)
-    :q
-    :call win_gotoid(wid)
     :vertical resize 120
 endif
