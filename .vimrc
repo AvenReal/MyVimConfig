@@ -176,6 +176,10 @@ nnoremap ~ :Vimrc<Enter> cd ~/<Enter>
 " Automatically close terminal buffers when quitting all
 autocmd QuitPre * if &buftype == 'terminal' | execute 'bdelete!' | endif
 
+" Enable the autocompetion
+: set autocomplete
+
+" set the color scheme
 :colorscheme habamax
 
 if filereadable("main.c") && expand('%:t:r') != "main.c"
