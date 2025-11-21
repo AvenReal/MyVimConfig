@@ -153,7 +153,7 @@ inoremap [ []<Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
 inoremap { {}<Esc>i
-inoremap {<CR> <CR>{<CR>} <Esc>O
+inoremap {<CR> <CR>{<CR>}<Esc>O
 
 
 inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
@@ -163,21 +163,17 @@ inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
 
 nnoremap x :w<Enter> :! clear && gcc *.c -fsanitize=address -Wextra -g && echo "-------------------------------------------------------------------" && ./a.out && rm a.out <Enter>
 
-command! Vimrc tabnew ~/.vimrc | term | wincmd L
+command! Vimrc tabnew ~/.vimrc
 
-nnoremap ~ :Vimrc<Enter> cd ~/<Enter>
-" :let wid = win_getid() <Enter>:vs "temp.vim" <Enter>:below term <Enter>:call win_gotoid(temp) <Enter>:q <Enter>:call win_gotoid(wid):vertical resize 120<Enter>
+nnoremap ~ :Vimrc<Enter>
 
 
 " ##############################################################################
 "                                  Extra
 " ##############################################################################
 
-" Automatically close terminal buffers when quitting all
-autocmd QuitPre * if &buftype == 'terminal' | execute 'bdelete!' | endif
-
 " Enable the autocompetion
-: set autocomplete
+:set autocomplete
 
 " set the color scheme
 :colorscheme habamax
