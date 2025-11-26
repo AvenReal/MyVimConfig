@@ -158,13 +158,48 @@ inoremap " ""<Esc>i
 inoremap { {}<Esc>i
 inoremap {<CR> <CR>{<CR>}<Esc>O
 
+if expand("%:e") == "c"
+    inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
+    inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
+    inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
+endif
 
-inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
-inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
-inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
+
+function! MakefileTargets(A,L,P) abort
+    let targets = []
+
+    " Read the Makefile
+    if filereadable("Makefile")
+        for line in readfile("Makefile")
+            " Match a target of the form: target_name:
+             if line =~ '^\([A-Za-z0-9_.-]\+\):'
+                " Extract the target *without the colon*
+                let target = matchstr(line, '^[A-Za-z0-9_.-]\+')
+                call add(targets, target)
+            endif
+        endfor
+    endif
+
+    return targets
+endfunction
 
 
-nnoremap x :w<Enter> :! clear && gcc *.c -fsanitize=address -Wextra -g && echo "-------------------------------------------------------------------" && ./a.out && rm a.out <Enter>
+
+function! Run(name, ...)
+    let args = join(a:000, ' ')
+    if filereadable("Makefile")
+        execute 'make ' . a:name . ' && printf "\n\n\n" && ./'. a:name . ' ' . args . ' ; printf "\n\n\n" && make clean '
+    elseif filereadable("main.c")
+        execute 'gcc main.c && printf "\n\n\n" && ./a.out ; printf "\n\n\n" && rm a.out'
+    else
+        execute 'gcc ' . expand('%:t') . '&& printf "\n\n\n" && ./a.out ; printf "\n\n\n" && rm a.out'
+    endif
+    redraw
+endfunction
+
+command! -nargs=+ -complete=customlist,MakefileTargets Run call Run(<f-args>)
+
+
 
 command! Vimrc tabnew ~/.vimrc
 
