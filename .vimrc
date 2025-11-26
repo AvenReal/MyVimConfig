@@ -26,6 +26,9 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " https://github.com/airblade/vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
 
+" https://github.com/maralla/completor.vim
+Plugin 'maralla/completor.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -173,22 +176,24 @@ nnoremap ~ :Vimrc<Enter>
 " ##############################################################################
 
 " Enable the autocompetion
-:set autocomplete
+" :set autocomplete
 
 " set the color scheme
 :colorscheme habamax
 
-if filereadable("main.c") && expand('%:t:r') != "main.c"
-    :let wid = win_getid()
+:let width = winwidth(0)
+:let wid = win_getid()
+if filereadable("main.c") && expand('%:t:r') != "main.c" && width >= 120
     :vs main.c
     :below term
     :call win_gotoid(wid)
     :wincmd H
     :vertical resize 120
 else
-    :let wid = win_getid()
     :below term
     :call win_gotoid(wid)
-    :wincmd H
-    :vertical resize 120
+    if width >= 120
+        :wincmd H
+        :vertical resize 120
+    endif
 endif
