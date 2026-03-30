@@ -162,6 +162,10 @@ if expand("%:e") == "c"
     inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
     inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
     inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
+    inoremap while while()<CR>{<CR>}<Esc>O
+    inoremap do do<CR>{<CR>}while();<Esc>O
+    inoremap if if()<CR>{<CR>}<Esc>O
+    inoremap switch switch()<CR>{<CR>}<Esc>O
 endif
 
 
