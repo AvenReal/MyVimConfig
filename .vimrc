@@ -109,6 +109,14 @@ highlight GitGutterChange   guifg=#ffff00 guibg=#ffff00
 highlight GitGutterDelete   guifg=#ff0000 guibg=#ff0000
 
 " ##############################################################################
+"                             UltiSnips
+" ##############################################################################
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-v>"
+
+" ##############################################################################
 "                               Other Things
 " ##############################################################################
 
