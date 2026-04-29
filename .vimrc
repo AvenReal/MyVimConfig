@@ -166,7 +166,7 @@ if expand("%:e") == "c"
     inoremap do do<CR>{<CR>} while();<Esc>O
     inoremap if if()<CR>{<CR>}<Esc>O
     inoremap switch switch()<CR>{<CR>}<Esc>O
-    inoremap case case:<CR>{<CR>breack;<CR>}<Esc>O
+    inoremap case case:<CR>{<CR><CR>break;<CR>}<Esc>O
 endif
 
 
