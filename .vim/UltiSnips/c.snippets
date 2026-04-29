@@ -1,0 +1,58 @@
+
+snippet for "C-styled for loop"
+for(int ${1:i} = ${2:0}; $1 < ${3:MAX}; $1++)
+{
+    $4
+}
+$0
+endsnippet
+
+snippet if "C-styled if"
+if($1)
+{
+    $2
+}
+$0
+endsnippet
+
+snippet do "C-styled do while loop"
+do
+{
+    $2
+} while($1);
+$0
+endsnippet
+
+snippet while "C-styled while loop"
+while($1)
+{
+    $2
+}
+$0
+endsnippet
+
+snippet switch "C-styled switch case"
+switch($1)
+{
+    $2
+}
+$0
+endsnippet
+
+snippet case "C-styled case of switch case"
+case $1:
+{
+    $2
+	break;
+}
+$0
+endsnippet
+
+snippet default "C-styled default case of switch case"
+default:
+{
+    $1
+    break;
+}
+$0
+endsnippet

@@ -29,6 +29,10 @@ Plugin 'airblade/vim-gitgutter'
 " https://github.com/maralla/completor.vim
 Plugin 'maralla/completor.vim'
 
+" https://github.com/SirVer/ultisnips
+Plugin 'SirVer/ultisnips'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -159,14 +163,14 @@ inoremap { {}<Esc>i
 inoremap {<CR> <CR>{<CR>}<Esc>O
 
 if expand("%:e") == "c"
-    inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
-    inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
-    inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
-    inoremap while while()<CR>{<CR>}<Esc>O
-    inoremap do do<CR>{<CR>} while();<Esc>O
-    inoremap if if()<CR>{<CR>}<Esc>O
-    inoremap switch switch()<CR>{<CR>}<Esc>O
-    inoremap case case:<CR>{<CR><CR>break;<CR>}<Esc>O
+    ""inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
+    ""inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
+    ""inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
+    ""inoremap while while()<CR>{<CR>}<Esc>O
+    ""inoremap do do<CR>{<CR>} while();<Esc>O
+    ""inoremap if if()<CR>{<CR>}<Esc>O
+    ""inoremap switch switch()<CR>{<CR>}<Esc>O
+    ""inoremap case case:<CR>{<CR><CR>break;<CR>}<Esc>O
 endif
 
 
@@ -237,3 +241,4 @@ else
         :vertical resize 120
     endif
 endif
+
