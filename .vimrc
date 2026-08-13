@@ -170,17 +170,8 @@ inoremap " ""<Esc>i
 inoremap { {}<Esc>i
 inoremap {<CR> <CR>{<CR>}<Esc>O
 
-if expand("%:e") == "c"
-    ""inoremap fori for(int i = 0; i <  ; i++)<CR>{<CR>}<Esc>O
-    ""inoremap forj for(int j = 0; j <  ; j++)<CR>{<CR>}<Esc>O
-    ""inoremap forkk for(int k = 0; k <  ; k++)<CR>{<CR>}<Esc>O
-    ""inoremap while while()<CR>{<CR>}<Esc>O
-    ""inoremap do do<CR>{<CR>} while();<Esc>O
-    ""inoremap if if()<CR>{<CR>}<Esc>O
-    ""inoremap switch switch()<CR>{<CR>}<Esc>O
-    ""inoremap case case:<CR>{<CR><CR>break;<CR>}<Esc>O
-endif
-
+let @c = "I// \<Esc>j"
+let @u = "I\<Del>\<Del>\<Del>\<Esc>j"
 
 function! MakefileTargets(A,L,P) abort
     let targets = []
