@@ -29,6 +29,24 @@ Keep Cursor centered when pressing `j` or `k`
 #### `nnoremap p pv=`
 Automaticaly indent the first line of the block that you paste
 
+#### `nnoremap <C-Tab> :tabnew `
+Open a new tab by pressing `<C-Tab>` in *Normal mode*
+
+#### `nnoremap H :call ToggleH()<Enter>`
+Toggle between `.c` and `.h` files
+
+#### `inoremap <Esc> <Esc>:call Format()<Enter>`
+Format code when exiting insert mode
+
+#### `inoremap froi` / `inoremap froj` / `inoremap frokk`
+Insert a `for` loop block with index `i`, `j`, or `k`
+
+#### `inoremap #if`
+Generate header guard block
+
+#### `inoremap #d #define ` / `inoremap #in #include `
+Quickly type `#define ` and `#include `
+
 ### Macros
 
 #### `@c`
@@ -37,15 +55,22 @@ Comment the current line
 #### `@u`
 Uncomment the current line
 
-#### `@h`
-Generate header file 
+#### `@f`
+Automatically write the start of a `fork()` block
 ```c
-#ifndef <NAME>_H
-#define <NAME>_H
-
-
-#endif /* <NAME>_H */
+type* name =<Esc>@f
 ```
+```c
+type* name = fork();
+if(name < 0)
+    return 1;
+if(name == 0){
+
+}else{
+
+}
+```
+
 #### `@m`
 Autommatcaly malloc the current variable
 ```c
@@ -58,8 +83,8 @@ if(!name)
 
 ### Plugins
 
-#### [mattn/vim-smear-cursor](https://github.com/mattn/vim-smear-cursor)
-A Vim plugin that renders a smear trail behind the cursor as it moves, using sub-cell 2x2 matrix characters (block elements) for smooth rendering. Inspired by smear-cursor.nvim.
+#### [justinmk/vim-syntax-extra](https://github.com/justinmk/vim-syntax-extra)
+Vim syntax highlighting for c, bison, flex
 
 #### [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)
 Insert or delete brackets, parens, quotes in pair.
