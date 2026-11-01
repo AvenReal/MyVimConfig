@@ -1,17 +1,14 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'mattn/vim-smear-cursor'
-
+" https://github.com/jiangmiao/auto-pairs
 Plugin 'jiangmiao/auto-pairs'
 
 " https://github.com/maralla/completor.vim
@@ -23,10 +20,11 @@ Plugin 'vim-airline/vim-airline'
 " https://github.com/Yggdroot/indentLine
 Plugin 'Yggdroot/indentLine'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+" https://github.com/justinmk/vim-syntax-extra
+Plugin 'justinmk/vim-syntax-extra'
 
-"  ------------- Vim-Airline -------------
+call vundle#end()
+filetype plugin indent on
 
 let g:airline_left_sep = '🭀'
 let g:airline_right_sep = '🭦'
@@ -35,9 +33,9 @@ let g:airline_section_z = "Line: %l/%L, Col: %c/%C"
 
 let g:indentLine_char = '│'
 
-"  ------------- General -------------
+"  ------------- General ------------- 
 
-set wrap
+set wrap 
 set textwidth=79
 set tabstop=4
 set shiftwidth=4
@@ -46,7 +44,7 @@ set softtabstop=4
 set autoindent
 set smartindent
 set number
-set relativenumber
+set relativenumber 
 set colorcolumn=80
 
 let &t_SI = "\e[6 q"
@@ -56,26 +54,25 @@ set mouse=a
 set scrolloff=999
 set autocomplete
 
-"  ------------- Maps -------------
+"  ------------- Maps ------------- 
 
-nnoremap <C-Tab> :tabnew
+nnoremap <C-Tab> :tabnew 
 nnoremap <Tab> :tabNext<Enter>
 nnoremap ~ :tabnew ~/.vimrc<Enter>
 nnoremap j jzz
 nnoremap k kzz
 nnoremap p pv=
 
-" ------------- Theme ----------
+" ------------- Theme ---------- 
 
 colorscheme unokai
 highlight Normal ctermbg=NONE
 highlight NonText ctermbg=NONE
 
-"  ------------- C files specific -------------
-if expand("%:e") == "c"
+"  ------------- C files specific ------------- 
+if expand("%:e") == "c" 
     let @c = "I// \<Esc>j"
     let @u = "I\<Del>\<Del>\<Del>\<Esc>j"
-    let @h = "ggI#ifndef <NAME>_H\<CR>#define <NAME>_H\<CR>\<CR>#endif /* <NAME>_H */\<Esc>:%s/<NAME>/" . toupper(expand("%:r")) . "/g\<Enter>"
     let @m = "^vf*f hh\"tyf*f lvf=h\"nyf=a malloc(sizeof(\<Esc>\"tp$a;\<Esc>oif(!\<Esc>\"npkf;hhi"
     let @f = "^f vf \"nyA fork(\<Esc>A;\<CR>if(\<Esc>\"np$i < 0\<Esc>oreturn 1;\<Esc>oif(\<Esc>\"np$i == 0\<Esc>A{\<CR>\<Esc>joelse{\<CR>"
 
@@ -95,7 +92,24 @@ if expand("%:e") == "c"
         endif
     endfunction
 
+    function! Format()
+        if expand("%:e") == "c"
+            normal! mf
+            :execute '%!clang-format'
+            normal! 'f
+        endif
+        :execute 'w'
+    endfunction
+
+    inoremap <Esc> <Esc>:call Format()<Enter>
     inoremap froi for(int i = 0; i < M ; i++)<CR>{<CR>}<Esc>O
     inoremap froj for(int j = 0; j < M ; j++)<CR>{<CR>}<Esc>O
     inoremap frokk for(int k = 0; k < M ; k++)<CR>{<CR>}<Esc>O
+
+    inoremap #if <Esc>ggI#ifndef <NAME>_H<CR>#define <NAME>_H<CR><CR>#endif /* <NAME>_H */<Esc>:%s/<NAME>/
+    inoremap #d #define 
+    inoremap #in #include 
+
+
 endif
+
