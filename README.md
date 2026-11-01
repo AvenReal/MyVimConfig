@@ -4,7 +4,14 @@ It uses [Vundle](https://github.com/VundleVim/Vundle.vim) as plugin manager
 (vim >> nvim)
 
 ## Install
-```./install.sh```
+```
+
+curl https://raw.githubusercontent.com/AvenReal/MyVimConfig/refs/heads/main/install.sh > AvenReal_MyVimConfig_install.sh
+chmod +x AvenReal_MyVimConfig_install.sh
+./AvenReal_MyVimConfig_install.sh
+rm AvenReal_MyVimConfig_install.sh
+
+```
 
 ## Usage
 
