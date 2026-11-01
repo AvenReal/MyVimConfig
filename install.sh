@@ -7,7 +7,7 @@ echo "This will overwrite your old .vimrc file ! once finished, you will arrive 
 read -p "Wanna Proceed ? [Yy/Nn]" -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    if ! [ -f ~/.vim/bundle/Vundle.vim ]; then
+    if ! [ -d ~/.vim/bundle/Vundle.vim ]; then
         git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     fi
 
