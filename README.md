@@ -32,6 +32,8 @@ Automaticaly indent the first line of the block that you paste
 #### `nnoremap <C-Tab> :tabnew `
 Open a new tab by pressing `<C-Tab>` in *Normal mode*
 
+### C/C++ Specific
+
 #### `nnoremap H :call ToggleH()<Enter>`
 Toggle between `.c` and `.h` files
 
@@ -46,8 +48,6 @@ Generate header guard block
 
 #### `inoremap #d #define ` / `inoremap #in #include `
 Quickly type `#define ` and `#include `
-
-### Macros
 
 #### `@c`
 Comment the current line
