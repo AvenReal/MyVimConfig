@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 echo "This will overwrite your old .vimrc file ! once finished, you will arrive in a vim updating plugins, simply `:qa` to quit one all plugins have been installed."
